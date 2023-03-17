@@ -1,0 +1,36 @@
+<script>
+  document.write("Hello.."); // document is not js
+  console.log("Hi..");  // console in not js
+  var x = 100;
+  document.write(x);
+  function f1(){
+     var x = 200;
+     console.log(x);
+  }
+  f1();
+  alert("Bla BlA"); // alert is not js code
+  localStorage.setItem("test","test"); //localStorage is not js code
+  /*
+    Execution of Js in Browser
+    1. Every Browser has a javascript engine by default
+    2. JE is responsible to execute js code.
+    3. In Javascript engine mainly call stack is a responible to 
+       execute the code.
+    4. Each and Every happen inside the call stack
+    5. This call stack has Global execution context by default
+    6. Each Execution context has two components
+       a. Memory component
+       b. Code Component (Thread(Single Thread))
+    7. If there is function call in your code then sperate
+       execution context(Memory , Code) is created inside the callstack   
+    8. Each and Every execution context has reference of
+       lexical enviornment(closure) of it's parent.
+       
+    9. Along with call stack one object is created by default
+       which is called globals  
+       
+       
+  */
+  
+  
+</script>
