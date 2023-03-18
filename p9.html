@@ -1,0 +1,39 @@
+<script>
+  console.log(20 + undefined); // undefined --> NaN ===> NaN
+  
+  console.log(20 + null); // 20  // null ---> 0
+  
+  console.log("20"+undefined); // "20undefined"
+  
+  console.log("20"+null); // "20null"
+
+  console.log(20*null); // 0
+  
+  console.log(null == 0); // false
+  
+  console.log(typeof(NaN)); // number
+  
+  console.log(NaN == NaN); // false
+  
+  console.log(NaN === NaN); // false (In Js NaN is false by default)
+  
+  console.log(NaN  !=  NaN); // true
+  
+  console.log(10 + NaN); // NaN
+  
+  console.log("10"+NaN); // 
+
+  console.log(typeof(BigInt(1))); // bigin
+  
+  //console.log(1n + 2);
+  
+  console.log(true == true); // true
+  
+  console.log(20 + true); // 21  true --> 1
+  
+  console.log(20 * false); // 0  false --> 0
+
+  console.log("20"+false); // "20false"
+  
+  console.log("20"+true); // "20true"
+</script>
