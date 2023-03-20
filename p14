@@ -1,0 +1,52 @@
+<script>
+   
+  /*
+    if-else, loop (Controll statment)
+    
+   1. if(expressiong/condition)
+        statement---1;
+      
+   2. if(expression/condition){
+        s-----1;
+        s-----2;
+      }   
+      
+   3. if(expression/condition)
+        state----1;
+      else
+        state----2;
+        
+   4. if(expression/condition){
+        s---1;
+        s---2;
+      }
+      else{
+        s----3;
+        s----4;
+      }
+             
+             
+  */
+   var x = 10;
+   
+   if(x>=18)
+     document.write("True");
+   else
+     document.write("False");    
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

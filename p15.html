@@ -1,0 +1,69 @@
+<script>
+   /*
+   
+    1. DRY (Do not repeat your self)
+    2. KISS  (Keep it simple & short)
+      // err:-- undefined, null, ""
+      // err: new Error(), "Error Message......"
+      getData((err,data)=>{
+       if(err){
+       
+       }
+       else{
+          // process data
+       }
+      });
+      
+     bs >= 10000
+       hra = 10%
+       da = 5%
+       ta  = 3%
+     other
+       hra = 5%
+       ta = 3%
+    Calculate gross salary     
+   */
+   var basicSalary = prompt("Enter Basic Salary");
+   //basicSalary = basicSalary * 1;
+   
+   if(basicSalary && (!isNaN(basicSalary))){
+     basicSalary *= 1;
+     var hra,ta,da,gs; // undefined
+     if(basicSalary >=10000){
+       hra = (basicSalary*10)/100;
+       da = (basicSalary*5)/100;
+       ta = (basicSalary*3)/100;
+     }
+     else{
+       hra = (basicSalary*5)/100;
+       ta = (basicSalary*3)/100;
+       da = 0;
+     }
+     gs = basicSalary + da + ta + hra;
+     document.write("<br>HRA : "+hra);
+     document.write("<br>TA : "+ta);
+     da && document.write("<br>DA : "+da);
+     document.write("<br>Gross Salary : "+gs);
+     
+   } 
+   else{
+     document.write("Invalid input...");
+   }   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

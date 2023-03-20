@@ -4,9 +4,14 @@
   var b = 20;
   var c = 30;
   var d = 40;
-  
+  // &&
   var x = (a>b) && (++c<d); // finally return boolean
-  
+  /*
+    (a>b) && (++c<d)  :-- circuit
+    
+    10 > 20
+      false && (++c<d)  :--false
+  */
   document.write("x : "+x);
-  document.write("c : "+c);
+  document.write("<br>c : "+c);
 </script>
