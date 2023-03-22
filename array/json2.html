@@ -1,0 +1,49 @@
+<script>
+    var data = [
+        {
+           name: "A",
+           age: 24,
+           address:{
+             line1: "First address",
+             line2: "Second address"
+           },
+           city: "Indore" 
+        },
+        {
+           name: "B",
+           age: 24,
+           address:{
+             line1: "First address",
+             line2: "Second address"
+           },
+           city: "Indore" 
+        },
+        {
+           name: "C",
+           age: 24,
+           address:{
+             line1: "First address",
+             line2: "Second address"
+           },
+           city: "Indore" 
+        }
+    ];
+
+    document.write("<table width='100%' border='1'>");
+    document.write("<tr>");
+    document.write("<td>Name</td>");
+    document.write("<td>Age</td>");
+    document.write("<td>Address</td>");
+    document.write("<td>City</td>");    
+    document.write("<tr>");
+    for(var element of data){
+        document.write("<tr>");
+        document.write("<td>"+element["name"]+"</td>");
+        document.write("<td>"+element["age"]+"</td>");
+        document.write("<td>"+element["address"]["line1"]+","+element["address"]["line2"]+"</td>");
+        document.write("<td>"+element["city"]+"</td>");    
+        document.write("<tr>");  
+    }    
+    document.write("<table>");
+
+</script>

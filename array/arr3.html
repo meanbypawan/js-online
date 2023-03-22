@@ -1,0 +1,23 @@
+<script>
+   // 2d-array is collection of 1-d array (array of array)
+   var arr = [
+    [10,20,30],
+    [40,50,60],
+    [70,80,90]
+   ];
+
+   for(var rowIndex in arr){
+     // row = [10,20,30]
+     for(var colIndex in arr[rowIndex])
+       document.writeln(arr[rowIndex][colIndex]);
+     document.write("<br>");  
+   }
+//    for(var row of arr){
+//      // row = [10,20,30]
+//      for(var element of row)
+//        document.writeln(element);
+//      document.write("<br>");  
+//    }
+     
+</script>
+ 

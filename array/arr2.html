@@ -1,0 +1,46 @@
+<script>
+    var arr = [10,20,30,40,50,60];
+    /*
+      push()
+      pop()
+
+      unshift()
+      shift()
+      join()
+      splice():--add, remove
+      slice()
+      toString()
+      .....................
+    */
+    document.write("<br>"+arr);
+    arr.push(100);   // Add element at the last
+    document.write("<br>"+arr);
+    arr.pop(); // Remove element at the last index
+    document.write("<br>"+arr);
+
+    arr.unshift(1000);  // Add element at the begining
+    document.write("<br>"+arr); // Remove element at the begining
+
+    arr.shift();
+    document.write("<br>"+arr);
+
+    arr.splice(2,0,2000,3000,4000);
+    document.write("<br>"+arr);
+
+    arr.splice(2,3);
+    document.write("<br>"+arr);
+
+    var newArray = arr.slice(1,5);
+    document.write("<br>"+newArray);
+ 
+    var x = ["www", "google", "com"];
+    // www.google.com
+    var newString = x.join(".");
+    document.write("<br>"+newString); 
+ 
+    var y = [10,20,30,40,50];
+    newString = y.join(",");
+
+    document.write("<br>"+newString);
+ </script>
+ 

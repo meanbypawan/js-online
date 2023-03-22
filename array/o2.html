@@ -1,0 +1,41 @@
+<script>
+    var customerList = [
+        {
+            id: 1,
+            cname: "A",
+            age: 21
+        },
+        {
+            id: 2,
+            cname: "B",
+            age: 24
+        },
+        {
+            id: 3,
+            cname: "C",
+            age: 29
+        },
+        {
+            id: 4,
+            cname: "E",
+            age: 29
+        },
+        {
+            id: 5,
+            cname: "D",
+            age: 30
+        }
+    ];
+    customerList.push({
+        id: 6,
+        cname: "F",
+        age: 32
+    });
+    //customerList.splice(1,1);
+
+    customerList[0].mobile = "90091112222";
+    delete customerList[3].age;
+    for(var customer of customerList){
+        document.write(customer.id+"  "+customer.cname+" "+customer.age+" "+(customer.mobile ? customer.mobile: '')+"<br>");
+    }
+</script>
