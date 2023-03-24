@@ -1,0 +1,35 @@
+<script>
+    var customerList = [
+      {
+        id: 111,
+        name: "A",
+      },
+      {
+        id: 222,
+        name: "B"
+      },
+      {
+        id: 333,
+        name: "C"
+      }
+    ];
+    /*
+       Json Object ----> Json String  JSON.stringify(jsobobject)
+       Json String ---> Json Object JSON.parse(jsonstring)
+    */
+    localStorage.setItem("customers",JSON.stringify(customerList));
+    let customers = localStorage.getItem("customers");
+    customers = JSON.parse(customers);
+    document.write("<table border='1' width='100%'>");
+        document.write("<tr>");
+        document.write("<td>Id</td>");
+        document.write("<td>Name</td>");    
+        document.write("<tr>");    
+        for(var customer of customers){
+            document.write("<tr>");
+            document.write("<td>"+customer.id+"</td>");
+            document.write("<td>"+customer.name+"</td>");    
+            document.write("<tr>");
+        }    
+    document.write("</table>");
+</script>

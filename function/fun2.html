@@ -1,0 +1,29 @@
+<script>
+    // REST, SPREAD operator (ES6)
+   /* 
+    function f1(a,b,...x){
+      document.write("<br>a  :"+a);
+      document.write("<br>b : "+b);  
+      //document.write("<br>"+x);
+      for(var element of x)
+        document.write("<br>"+element);
+    }
+
+    f1(1,2,3,4,5,6,7,8);
+   */
+
+    function f1(){
+        return [1000,2000];
+    }
+    var result  = f1();
+    document.write(result);
+
+    var x = 100; // number object
+    var y = "hello"; // string object
+
+    var z = function(){
+      document.write("z-function called...");
+    }; 
+
+    z();
+</script>

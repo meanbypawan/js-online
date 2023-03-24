@@ -1,0 +1,18 @@
+<script>
+    function operation(a,b,callback){
+      if(typeof(a)!="number" || typeof(b)!="number")
+        callback(new Error("<br>Data is not number"));  
+      else{
+        var result = a + b;
+        document.write("<br>Addition : "+result);
+        callback(null,result);
+      }     
+    }
+    
+    operation(20,10,function(err,result){
+        if(err)
+          document.write(err);
+        else
+         result%2 ? document.write("<br>ODD") : document.write("<br>EVEN");  
+    });
+</script>
