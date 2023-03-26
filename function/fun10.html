@@ -1,0 +1,27 @@
+<script>
+    // Addition of 2 number
+    /*
+      Addition
+        property : a,b
+        Behaviour : add()
+    */
+
+   function Addition(x,y){
+     this.a = x;
+     this.b = y;
+     this.add = function(){
+       document.write("<br>Addition : "+(this.a + this.b));
+       wish();
+     }
+
+     var wish = function(){ // private
+        document.write("<br>GM.....");
+     }
+   }
+
+   var a = prompt("Enter a value")*1;
+   var b = prompt("Enter 2nd value")*1; 
+   var obj = new Addition(a,b);
+   obj.add();
+   
+</script>

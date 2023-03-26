@@ -1,0 +1,37 @@
+<script>
+    // let , const, var
+
+    /*
+    var x = 20;
+    var x = "heloo";
+    document.write(x);
+      o/p :- Success we can redefine variable in case of var
+    */
+  /*
+   let x = 20;
+   let x = "heloo";
+   document.write(x);
+   o/p: Error we can not redefine varaible in case of let
+  */
+ /*
+ document.write(x); //  undefined
+ let x = 20;
+ 
+  var is hoisted but let is not.
+ */
+
+ function f1(){
+    var z =500;
+    if(true){
+        let x = 100;
+        let y = 200;
+        const yy = 5000;
+    }
+    document.write(yy);
+    
+}
+
+f1();
+
+
+</script>

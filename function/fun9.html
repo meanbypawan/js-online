@@ -1,0 +1,24 @@
+<script>
+    // Function construtor
+ /*
+    Message
+     (m1,m2,m3)
+     
+ */
+function Message(){
+   this.m1 = function(){
+     document.write("<br>GM......");
+   }
+   this.m2 = function(){
+     document.write("<br>GE.......");
+   }
+   this.m3 = function(){
+     document.write("<br>GN.........");
+     this.m2();
+   }
+} 
+
+var obj = new Message(); 
+obj.m3();
+
+</script>

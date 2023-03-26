@@ -1,0 +1,39 @@
+<script>
+    /*
+       customer: 
+         property:- (id,name,acc,age,mobile)
+         behaviour :- withdrawal, depostie, balanceEnquiry
+    */
+
+     var customer = {
+        id: 100,
+        name: 'A',
+        acc: 'A2323242',
+        mobile: "9009111222",
+        bal: 50000,
+        withdrawal: function(amount){
+            if(amount > this.bal)   
+              document.write("<br>Insufficient Balance");
+            else{
+                this.bal -= amount;
+                document.write("<br>Withdrawal Success");
+            }  
+        },
+        deposite: function(amount){
+           this.bal += amount;
+           document.write("<br>Deposite Success");
+        },
+        balanceEnquiry: function(){
+              document.write("<br>Total Balance : "+this.bal);
+        },
+        viewDetails : function(){
+            document.write("<br>Name : "+this.name);
+            document.write("<br>Acc : "+this.acc+" and Bal : "+this.bal);
+        }
+     }
+
+     customer.viewDetails();
+     customer.withdrawal(5000);
+     customer.deposite(7000);
+     customer.balanceEnquiry();
+</script>
