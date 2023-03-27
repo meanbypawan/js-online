@@ -1,0 +1,15 @@
+<script>
+    function f1(){
+        var a = 100;
+        return function f2(){
+            console.log(a);
+        }
+        
+    }
+
+   var inner =  f1();// inner = function f2(){}
+   /*
+     1000 line of code
+   */
+   inner();
+</script>

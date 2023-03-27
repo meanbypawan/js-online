@@ -1,0 +1,16 @@
+<script>
+  // Data encapsulation :-- closure  
+  function f1(){  
+    var data = 200;
+    return function f2(){
+        console.log("Inside f2 : "+data);
+    }
+  }
+  function f3(){
+    console.log("Inside f3 : "+data);
+  }
+  //f1()();
+  var f2 = f1();
+  f2();
+  f3();
+</script>

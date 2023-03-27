@@ -1,0 +1,15 @@
+<script>
+    function f1(){
+        var a = 100;
+        function f2(){
+            function f3(){
+                console.log(a,b);
+            }
+            f3();
+        }
+        f2();
+    }
+
+    var b = 200;
+    f1();
+</script>

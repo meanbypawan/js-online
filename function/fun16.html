@@ -1,0 +1,20 @@
+<script>
+    function f1(){
+        var a = 100;
+        console.log("f1-called....");
+        return function f2(){
+            console.log("f2-called.....");
+            var b = 200;
+            return function f3(){
+                console.log(a,b,c);
+            }
+        }
+    }
+   var c = 300;
+   /* 
+   var f2 =  f1();
+   var f3 = f2();
+   f3();
+   */
+   f1()()(); // Function curring
+</script>

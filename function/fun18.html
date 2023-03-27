@@ -1,0 +1,14 @@
+<script>
+    function f1(){
+        
+        var increment = function (){
+            dataCounter++;
+            console.log("Increment : "+dataCounter);
+        }
+        let dataCounter = 100;
+        return increment;
+    }
+
+   var increment =  f1();
+   increment(); //
+</script>
