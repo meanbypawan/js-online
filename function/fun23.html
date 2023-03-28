@@ -1,0 +1,34 @@
+<script>
+    var arr = [10,23,45,67,20,40,56,80];
+    /*
+      Operation 1: add 1 in each value of array then get resultant array
+      Operation 2: Get all even number in a seperate array
+      Operaation 3: Calculate the sum of all array element
+    */
+   /*
+   const increment = (arr)=>{
+      var output = [];
+      for(var i=0; i<arr.length; i++)
+        output.push(arr[i]+1);
+      return output;  
+   }
+   */
+  /*
+  var output = arr.map((value)=>{
+    value = value + 1;
+    return value; 
+  });
+  */
+ var output = arr.map(value=>value+1);
+ var evenValues = arr.filter((value)=> value%2==1);
+
+ var result = arr.reduce((sum,current)=>{
+    sum = sum + current;
+    return sum;
+ },0);
+ 
+ 
+ document.write("Increment : "+output);
+ document.write("<br> Even Values : "+evenValues)
+ document.write("<br>Sum : "+result);
+</script>

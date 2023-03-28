@@ -1,0 +1,29 @@
+<script>
+    var radius  = [1,2,3,4,5];
+    
+    var calculateArea = function(){
+        var output = [];
+        for(var i=0; i<radius.length; i++)
+          output.push(3.14 * radius[i] * radius[i]);
+        return output;  
+    }
+
+    var calculateFerence = function(){
+       var output = [];
+       for(var i=0; i<radius.length; i++){
+         output.push(2 * Math.PI* radius[i]);
+       }
+       return output;
+    }
+
+    var calculateDiameter = function(){
+       var output = [];
+       for(var i=0; i<radius.length; i++){
+         output.push(2*radius[i]);
+       }
+       return output;
+    }
+    document.write("<br>Area : "+calculateArea());
+    document.write("<br>CircumFerence : "+calculateFerence());
+    document.write("<br>Diameter : "+calculateDiameter());
+</script>

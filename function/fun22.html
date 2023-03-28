@@ -1,0 +1,23 @@
+<script>
+    //var radius  = [1,2,3,4,5];
+
+    const area = function(r){
+        return Math.PI * r * r;
+    }
+    const circumFerence = function(r){
+        return 2 * Math.PI * r;
+    }
+    const diameter = function(r){
+        return 2*r;
+    }
+    
+    const calculate = function(radiusArray,operation){
+       var output = [];
+       for(var i=0; i<radiusArray.length; i++)
+         output.push(operation(radiusArray[i]));
+       return output;  
+    }  
+    document.write("<br>Area : "+calculate([1,2,3,4],area));
+    document.write("<br>CircumFerence : "+calculate([1,2,3,4],circumFerence));
+    document.write("<br>Diameter : "+calculate([1,2,3,4],diameter));
+</script>
