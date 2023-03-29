@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>Dom Testing</title>
+    </head>
+    <body>
+        <center>
+            <img src="toys.jpeg" width="500px" height="500px"
+              id="main"
+            />
+            <br><br>
+            <img onclick="changeImage(this)" src="teddy.jpeg" width="100px" width="100px" id="first"/>&nbsp;&nbsp;&nbsp;
+            <img onclick="changeImage(this)" src="tv.jpeg" width="100px" width="100px" id="second"/>&nbsp;&nbsp;&nbsp;
+            <img onclick="changeImage(this)" src="woodland.jpeg" width="100px" width="100px" id="third"/>&nbsp;&nbsp;&nbsp;
+        </center>
+        <script>
+            
+            function changeImage(currentImage){
+                var mainImage = document.getElementById("main");
+                var temp = main.src;
+                mainImage.src = currentImage.src;
+                currentImage.src = temp; 
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,27 @@
+<html>
+    <body>
+        <input type="password" id="password"/>
+        <label onclick="togglePassword()" id="show-hide">show</label>
+        <div id="para">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio impedit ratione quam ut neque ea veniam quisquam cum incidunt dolorum.</div>
+        <button onclick="getText()">GetText</button>
+        <script>
+            function getText(){
+              var divObject = document.getElementById("para");
+              divObject.innerHTML = "New Data";
+            }
+            function togglePassword(){
+                var passwordInput = document.getElementById("password");
+                var lableObj = document.getElementById("show-hide");
+                if(passwordInput.type=="password"){
+                    passwordInput.type = "text";
+                    lableObj.innerHTML = "Hide";
+                }
+                else{
+                    passwordInput.type = "password";
+                    lableObj.innerHTML= "Show"; 
+                }
+            }
+        </script>
+    </body>
+
+</html>

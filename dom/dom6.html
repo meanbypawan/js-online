@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <title>Dom Testing</title>
+    </head>
+    <body>
+        <button onclick="changeTable('red','blue')">R-B</button>
+        <button onclick="changeTable('green','pink')">G-P</button>
+        <button onclick="changeTable('orange','yellow')">O-Y</button>
+        <table id="dataTable" width="100%" border='1'>
+            <tr>
+                <td>Id</td>
+                <td>Name</td>
+                <td>Age</td>
+                <td>Mobile</td>
+            </tr>
+            <tr>
+                <td>100</td>
+                <td>Rahil</td>
+                <td>32</td>
+                <td>9009111222</td>
+            </tr>
+            <tr>
+                <td>100</td>
+                <td>Rahil</td>
+                <td>32</td>
+                <td>9009111222</td>
+            </tr>
+            <tr>
+                <td>100</td>
+                <td>Rahil</td>
+                <td>32</td>
+                <td>9009111222</td>
+            </tr>
+            <tr>
+                <td>100</td>
+                <td>Rahil</td>
+                <td>32</td>
+                <td>9009111222</td>
+            </tr>
+            <tr>
+                <td>100</td>
+                <td>Rahil</td>
+                <td>32</td>
+                <td>9009111222</td>
+            </tr>
+            <tr>
+                <td>100</td>
+                <td>Rahil</td>
+                <td>32</td>
+                <td>9009111222</td>
+            </tr>
+        </table>
+        <script>
+            function changeTable(firstColor, secondColor){
+               var tableObj = document.getElementById("dataTable");  
+               var rowsArray = tableObj.rows;
+               for(var index=1; index< rowsArray.length; index++){
+                  if(index%2){
+                    rowsArray[index].style.backgroundColor = secondColor;
+                  }
+                  else
+                    rowsArray[index].style.backgroundColor = firstColor;
+               }
+                       
+            }
+        </script>
+    </body>
+</html>

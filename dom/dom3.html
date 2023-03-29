@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>Dom Testing</title>
+    </head>
+    <body>
+        <center>
+            <img src="toys.jpeg" width="200px" height="200px"
+              id="logo"
+            />
+            <br><br>
+            <button onclick="changeSize(1)">+</button>
+            <button onclick="changeSize(0)">-</button>
+        </center>
+        <script>
+            function changeSize(n){
+               var imageObj = document.getElementById("logo");
+               if(n){
+                 imageObj.width += 50;
+                 imageObj.height += 50;
+               }
+               else{
+                  imageObj.width -= 50;
+                  imageObj.height -= 50;
+               }
+            }
+        </script>
+    </body>
+</html>

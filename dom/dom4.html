@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <title>Dom Testing</title>
+    </head>
+    <body>
+        <center>
+            <img src="toys.jpeg" width="500px" height="500px"
+              id="main"
+            />
+            <br><br><br><br>
+            <img  src="teddy.jpeg" width="100px" width="100px" id="first"/>&nbsp;&nbsp;&nbsp;
+            <img  src="tv.jpeg" width="100px" width="100px" id="second"/>&nbsp;&nbsp;&nbsp;
+            <img  src="woodland.jpeg" width="100px" width="100px" id="third"/>&nbsp;&nbsp;&nbsp;
+        </center>
+        <script>
+            document.getElementById("first").onclick = function(){
+                changeImage("first");
+            }
+            document.getElementById("second").onclick = function(){
+                changeImage("second");
+            }
+            document.getElementById("third").onclick = function(){
+                changeImage("third");
+            }
+            function changeImage(currentImageId){
+                var currentImageObject = document.getElementById(currentImageId);
+                var mainImage = document.getElementById("main");
+                var temp = main.src;
+                mainImage.src = currentImageObject.src;
+                currentImageObject.src = temp; 
+            }
+        </script>
+    </body>
+</html>
