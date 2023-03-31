@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>Dom Testing</title>
+    </head>
+    <body>
+        <center>
+            <img src="toys.jpeg" width="500px" height="500px"
+              id="main"
+            />
+            <br><br>
+            <img class="first" src="teddy.jpeg" width="100px" width="100px" id="first"/>&nbsp;&nbsp;&nbsp;
+            <img class="second" src="tv.jpeg" width="100px" width="100px" id="second"/>&nbsp;&nbsp;&nbsp;
+            <img  src="woodland.jpeg" width="100px" width="100px" id="third"/>&nbsp;&nbsp;&nbsp;
+        </center>
+        <script>
+            document.querySelector(".first")
+            .addEventListener("click",function(){
+               console.log(this); // It will souce object
+            });
+
+            document.querySelector(".second")
+            .addEventListener("click",()=>{
+               console.log(this); // It will always refer global
+            });
+        </script>
+    </body>
+</html>
