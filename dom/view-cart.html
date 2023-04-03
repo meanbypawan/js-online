@@ -1,0 +1,106 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="./e-shop-js.js"></script>
+        <style>
+            .tableDiv{
+                border: 1px solid black;
+               
+            }
+            .orderSummery{
+                border: 1px solid black;
+                height: 200px;
+            }
+        </style>
+    </head>
+    <body>
+      <div class="container-fluid" id="navigation"></div>
+      <div class="container mt-4">
+        <div class="row">
+            <div  class="col-md-8 tableDiv">
+              <table id="dataTable" class="table">
+                <tr>
+                    <th>S.no</th>
+                    <th>Title</th>
+                    <th>Brand</th>
+                    <th>Price</th>
+                    <td>Qty</td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-md-3 offset-1 orderSummery">
+               <h5 class="text-center">Order Summery</h5>
+               <p id="totalItem">Total Item : 10</p>
+               <p id="totalBillAmount">Bill Amount : 5000</p>
+               <button class="btn btn-success">Checkout</button>
+            </div>
+        </div>
+      </div>
+      <script>
+        
+        createNavigationBar();
+        var cartItem = getCartItem();
+        
+         var totalItem = document.querySelector("#totalItem");
+         totalItem.innerHTML = "Total Item : "+cartItem.length;
+
+        cartItem = cartItem.map((item)=>{
+            item.qty = 1;
+            return item;
+        });
+        function calculcateTotalBillAmount(){
+            let totalBillAmount = cartItem.reduce((sum,currentProduct)=>{
+                    sum = sum + (currentProduct.price * currentProduct.qty);
+                    return sum;
+            },0);
+
+            return totalBillAmount;
+        }
+        document.querySelector("#totalBillAmount").textContent = "Total Bill : "+calculcateTotalBillAmount();
+        
+        var table = document.querySelector('#dataTable');
+        for(let product of cartItem){
+            let tr = document.createElement("tr");
+            
+            let tdSno = document.createElement("td");
+            tdSno.textContent = product.id;
+            
+            let tdTitle = document.createElement("td");
+            tdTitle.textContent = product.title;
+
+            let tdBrand = document.createElement("td");
+            tdBrand.textContent = product.brand;
+
+            let tdPrice = document.createElement("td");
+            tdPrice.textContent = product.price;
+
+            let qty = document.createElement("input");
+            qty.setAttribute("type","number");
+            qty.setAttribute("value",product.qty);
+            qty.style.width = "50";
+
+            qty.addEventListener("change",function(event){
+                let currentQty = event.target.value;
+                tdPrice.textContent = product.price * currentQty;
+                product.qty = currentQty;
+
+                let billAmount = calculcateTotalBillAmount();        
+
+                document.querySelector("#totalBillAmount").textContent = "Bill Amount : "+billAmount;
+            })
+
+            tr.appendChild(tdSno);
+            tr.appendChild(tdTitle);
+            tr.appendChild(tdBrand);
+            tr.appendChild(tdPrice);
+            tr.appendChild(qty);
+
+            table.appendChild(tr);
+        } 
+      </script>
+    </body>
+</html>
