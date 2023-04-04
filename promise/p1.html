@@ -1,0 +1,31 @@
+<<script>
+/*
+  Why Promise :- To Handle multiple Asynchornous Operation easily.
+  What is Promise :- Promise is an object represting
+  eventual completion or failure of asynchonous operation.
+
+     OR
+  Pormise is object which may return value sometime in future.
+  Result may be success or Failure
+  
+  State of Promise:-
+    Pending
+    Resloved/Fullfilled
+    Rejected
+    
+    Settled
+*/
+ var p = new Promise((resolve,reject)=>{
+    //resolve();
+    reject();
+ });
+
+p.then(()=>{
+    console.log("Promise is resolved..");
+})
+.catch(()=>{
+    console.log("Promise is rejected.....");
+})
+
+
+</script>

@@ -7,22 +7,21 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
         <script src="./e-shop-js.js"></script>
         <style>
-            .tableDiv{
-                border: 1px solid black;
-               
-            }
             .orderSummery{
-                border: 1px solid black;
                 height: 200px;
+            }
+            .shadowDiv{
+                box-shadow: 10px 10px 10px black;
+                padding: 10px;
             }
         </style>
     </head>
     <body>
       <div class="container-fluid" id="navigation"></div>
       <div class="container mt-4">
-        <div class="row">
-            <div  class="col-md-8 tableDiv">
-              <table id="dataTable" class="table">
+        <div class="row ">
+            <div  class="col-md-8">
+              <table id="dataTable" class="table shadowDiv">
                 <tr>
                     <th>S.no</th>
                     <th>Title</th>
@@ -32,13 +31,45 @@
                 </tr>
               </table>
             </div>
-            <div class="col-md-3 offset-1 orderSummery">
+            <div class="col-md-3 offset-1 shadowDiv orderSummery">
                <h5 class="text-center">Order Summery</h5>
-               <p id="totalItem">Total Item : 10</p>
-               <p id="totalBillAmount">Bill Amount : 5000</p>
-               <button class="btn btn-success">Checkout</button>
+               <p id="totalItem" class="text-warning font-weight-bold">Total Item : 10</p>
+               <p id="totalBillAmount" class="text-primary font-weight-bold">Bill Amount : <span style="font-size:30px;font-style:bold; ">5000</span></p>
+               <button data-toggle="modal" data-target="#exampleModal" class="btn btn-success" style="width:100%;">Checkout</button>
             </div>
         </div>
+        <div id="exampleModal" class="modal" tabindex="-1">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Order Details</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                 <form>
+                    <div class="form-group">
+                        <label>Contact Person Name</label>
+                        <input type="text" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Contact Number</label>
+                        <input type="text" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Delivery Address</label>
+                        <textarea class="form-control"></textarea>
+                    </div>
+                 </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
       </div>
       <script>
         
@@ -60,8 +91,8 @@
 
             return totalBillAmount;
         }
-        document.querySelector("#totalBillAmount").textContent = "Total Bill : "+calculcateTotalBillAmount();
-        
+        document.querySelector("#totalBillAmount").innerHTML = `<span style="font-size:30px;font-style:bold; color:red;">Rs. ${calculcateTotalBillAmount()}</span></p>`;
+
         var table = document.querySelector('#dataTable');
         for(let product of cartItem){
             let tr = document.createElement("tr");
@@ -81,7 +112,8 @@
             let qty = document.createElement("input");
             qty.setAttribute("type","number");
             qty.setAttribute("value",product.qty);
-            qty.style.width = "50";
+            qty.setAttribute("min",1);
+            qty.style.width = "40";
 
             qty.addEventListener("change",function(event){
                 let currentQty = event.target.value;
@@ -90,7 +122,7 @@
 
                 let billAmount = calculcateTotalBillAmount();        
 
-                document.querySelector("#totalBillAmount").textContent = "Bill Amount : "+billAmount;
+                document.querySelector("#totalBillAmount").innerHTML = `<span style="font-size:30px;font-style:bold; color:red;">Rs. ${billAmount}</span></p>`;
             })
 
             tr.appendChild(tdSno);

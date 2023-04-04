@@ -1,0 +1,25 @@
+<script>
+ console.log("At the start...");
+
+ const eatingPizza = ()=>{
+   setTimeout(()=>{
+    console.log("Pizza Done...");
+   },4000);
+ }
+
+ const servicingCar = ()=>{
+    setTimeout(()=>{
+        console.log("Servic Done....");
+    },6000);
+ }
+
+ const meetingWithFriends = ()=>{
+   setTimeout(()=>{
+     console.log("Meeting Done...");
+   },3000);
+ }
+ eatingPizza(); // 4 sec
+ servicingCar(); // 6 sec
+ meetingWithFriends(); // 3 sec
+ console.log("At the end...");
+</script>

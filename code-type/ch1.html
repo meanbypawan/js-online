@@ -1,0 +1,30 @@
+<script>
+    const first = (val,callback)=>{
+        console.log("Inside First : "+val);
+        callback(val+2)
+    }
+
+    const second = (val,callback)=>{
+        console.log("Inisde Second : "+val);
+        callback(val+2);
+    }
+
+    const third = (val,callback) =>{
+        console.log("Inisde Third : "+val);
+        callback(val+2);
+    }
+
+    const fourth = (val)=>{
+        console.log("Inside Fourth : "+val);
+    }
+
+//first --> second ---> third ---> fourth
+first(10,function(val){
+    second(val,function(val){
+        third(val,function(val){
+            fourth(val);
+        });
+    });
+});
+// Promise
+</script>
