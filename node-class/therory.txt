@@ -1,0 +1,77 @@
+1. It is developed by Ryan Dahl.
+
+2.Node.JS is not programming language
+
+3. Node.Js is open source cross platform
+Server Envionment.
+
+4. Node allows us to run javascript on server side. and it also us to run javascript outside the browser.
+
+5. In NodeJs Everywhere you will find javascript.
+
+6. Node.Js is javascript runtime envionrment build upon google chrome v8 engine.
+
+7. GC(v8)--->c++(v8)
+
+8. Node application is superfast and highly scalable.
+
+ a. 33% fewer line of code.
+ b. 40% fewer files
+ c. 2 * request/sec
+ d. 35% faster response time.
+
+ 9. Two Types of application  
+     a. CPU Intensive appl.
+     (Video Editing, Image Manipulation......)
+     b. IO Intensive (NODE)
+     (Facebook.............)
+
+10. Node Basically both Library Synchronous/Blocking and Asynchronous/Nonblocking     
+
+11. Node use Single Thread Javascript Event Loop Model
+
+12. Node.Js-Server
+    Thread Pool--. libuv 
+     Pool of ReadyMade thread 
+
+
+ Browser appi     Node
+  Doucment ----->  not
+  Console  -----> yes
+  fetch    -----> yes
+  Timeer   -----> yes
+  localstorage --> no
+  .
+  .
+  .  
+  ------------------------------------
+  Node >= 16
+  npm (Node package manager)
+
+  Node s/w + library(dependency/modules)
+
+  Module/dependency
+  1. Envionment Level/ Global Level
+     nodemon
+     express-generator
+     @angular/cli
+     npm install -g nodemon
+
+  2. Application Level
+     a. Default
+         events
+         fs
+         http
+         url
+         path
+         .......
+     b. Installable
+         body-parser
+         mysql2
+         sequelize
+         mongoose
+         cors
+         jsonwebtoken
+    npm install mysql2 --save
+
+
