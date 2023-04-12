@@ -1,0 +1,5 @@
+Node.Js is javascript Runtime Envionment
+Node.Js Application Higly scalable and superfase
+Node.Js is suitable to develop io-intensive Application
+In Node. Every where javascript is there.
+Node.Js Inspired by the javascript event loop model.
