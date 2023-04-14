@@ -1,0 +1,97 @@
+Node.Js code without express :-
+ 1. Manual route checking
+    if(request.url == "/home")
+ 2. Manual Method Checking
+    if(request.url == "/home" && request.method=="GET")   
+ 
+ 3. No UI Rendering Support
+     index.html --> fs
+     
+ 4. Problem Serving In Static Files
+    image, external file (css,audio,image) 
+ 
+ 5. No Template(Jade, PUG, EJS) Engine Support
+    (Client Side Code + Server Side Code)
+    
+ 6. Very Massive Code.      
+       
+Express.JS(express) :- It is Javascript based Webappliation framework.(MVC)
+
+  Middleware (Backbonde of Express.Js) :-
+   Middlewares are the functions that have access of requet object, response object and next object in application's request response life cycle
+   
+   Middleware can perform following task,
+   1. It can modify client request object
+   2. Sending response to the client
+   3. End request-response life cycle
+   4. Execute any code
+   5. call next middleware in the stack
+   
+   http://localhost:3000/home
+   
+   app.use((request,response,next)=>{
+      // user login
+      // you will to check the session
+      if user logged in
+        next();
+      else
+        send error message  
+   });
+   app.get("/home",(request,response,next)=>{
+     // If you don't want to send the response from here
+     // 90% Most of the cases
+     //next();  request left hanging
+   }); 
+   ......
+   ......
+   ......
+  
+  Types of Middleware
+   1. Application Level Middleware
+   2. Route Level Middleware
+   3. Third party middleware
+   4. Built-in middleware
+   5. Error Handling middleware
+  
+  -----------------------------------
+  http://localhost:3000/home
+   /home :-    Home Page
+   /about :-   About Page     ------> All Request are the get
+   /contact :---Contact Page
+  
+ HTTP VERB :-- GET, POST, DELETE,PUT 
+  
+  
+  http://localhost:3000/product/1001
+  
+  /product/:id(1001)
+  app.get("/product/:productId")
+  
+    http://localhost:3000/product/1001/2001
+  app.get("/product/:productId/:categoryId")
+  ---------------------------------------------------------------------------------
+  E-commerce :
+     Product  :-   (product.route.js)
+      save    ----/product/save
+      edit    ----/product/:id
+      delete  ---/product/:id
+      fetch   ---/product
+      fetchById  
+      
+    Category  :- category.route.js
+    
+    User  :-----user.route.js
+    
+    Order :-----order.route.js
+    
+    
+    Cart   :-  cart.route.js
+  
+  
+  
+  
+  
+  
+  
+  
+  
