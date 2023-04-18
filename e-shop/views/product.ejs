@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <%- include('__bootstrap.ejs')%>
+      <style>
+        .cardStyle{
+         box-shadow: 10px 10px 10px grey;
+        }
+      </style>
+   </head>
+   <!-- body -->
+   <body class="main-layout">
+     
+      <%- include('__header.ejs')%>
+     
+      <div class="container">
+        <div class="row mt-5">
+          <div class="col-md-2">
+            <%for(let category of categoryList){%>
+              <p><%=category.categoryName%></p>
+              <hr/>
+            <%}%>    
+          </div>
+          <div class="col-md-10">  
+          <div class ="row">  
+          <%for(let product of productList){%>
+             <div class="col-md-3 offset-1 cardStyle mt-2 p-3">
+               <h3 class="text-center"><%=product.title%></h3>
+               <img src="<%=product.thumbnail%>" style="width:100%; height: 200px"/>
+               <p class="text-center mt-1 mb-1 text-center font-weight-bold"><%=product.brand%></p>
+               <p class="text-success font-weight-bold text-center"><%="Rs."+product.price%></p>
+               <p class="mt-1 mb-1 text-center"><%=product.description.substring(0,25)+"..."%></p> 
+               <p class="text-center"><a href="" class="text-primary">View more</a></p>
+               <div class="mt-1">
+                  <button onclick="addToCart('<%=product.id%>')" class="btn btn-primary" style="width:100%">Add To Cart</button>
+               </div>
+            </div>     
+          <%}%> 
+        </div>
+        </div>
+        </div>
+      </div>
+      <%- include('__footer.ejs')%>
+     
+   </body>
+</html>
+

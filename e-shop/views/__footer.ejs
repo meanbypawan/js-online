@@ -68,6 +68,19 @@
  </footer>
  <!-- end footer -->
  <!-- Javascript files-->
+ <script>
+   function addToCart(productId){
+     var xhttp = new XMLHttpRequest();
+     window.alert(productId);
+     xhttp.open("GET","/cart/add-to-cart/"+productId,true);
+     xhttp.send();
+     xhttp.onreadystatechange = function(){
+      if(xhttp.readyState == 4){
+         window.alert(xhttp.responseText);
+      }
+     }
+   }
+ </script>
  <script src="js/jquery.min.js"></script>
  <script src="js/popper.min.js"></script>
  <script src="js/bootstrap.bundle.min.js"></script>

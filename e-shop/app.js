@@ -3,6 +3,7 @@ import {fileURLToPath} from "url";
 import path from "path";
 import IndexRouter from "./routes/index.route.js";
 import ProductRouter from "./routes/product.route.js";
+import CartRouter from './routes/cart.route.js';
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.use(express.static(publicPath));
 // http://localhost:3000/product/...
 app.use("/product",ProductRouter);
 
+app.use("/cart",CartRouter);
 // http://localhost:3000/
 app.use("/",IndexRouter);
 

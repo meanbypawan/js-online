@@ -1,0 +1,86 @@
+XMLHttpRequest
+  
+  1. create XMLHttpRequest Object
+      var xhttp = new XMLHttpRequest()
+  
+  2. Open the request
+      xhttp.open("GET","/cart/addToCart",true);
+      
+  3. Send The request
+      xhttp.send(); //-----> request send to server
+                     // 0
+                    // server connection will be established : 1
+                    // server receive the request : 2
+                    // server process the request : 3
+                    // response ready to sent : 4
+                    
+      Client-----------------------xhttp----------------------------Server              
+       
+       xhttp (properties of xhttp)
+         a. status : 200, 404
+         b. responseText :- server response
+         c. readyState (Respresent position on request at server side) : 0,1,2,3,4
+         d. onreadystatechange = function(){}
+                      
+  4. process the response at the client side                           
+  
+      xhttp.onreadstatechange = function(){
+         if(xhttp.readyState == 4){
+            // process the response....
+         }
+      }
+  ------------------------------------------------------------------------------------    
+    1. User is responsible to creat the cart (cart belongsTo User)
+    2. one cart may have multiple items  
+    
+    -----------------------------------
+      User      Cart
+      
+      One to One
+      One to many
+      Many to Many
+      
+      Products   Cart
+      
+      Single product may belongs to multiple carts
+      
+      one cart may have multiple products
+      
+      User Cart (one to one)
+      Product Carts (Many Many)
+      
+     ----------------------------------------------
+     Session/ express-session :(User Tracking)
+      
+      Http protocol is responsible to establish
+      communication
+      
+      Http is state-less protocol
+      meanse By the end of every request-response
+      life cycle , client and server forget to 
+      each other
+      
+     
+     
+     
+     
+     
+     
+     
+      
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    
+        
+      
+  
