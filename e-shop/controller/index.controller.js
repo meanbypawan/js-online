@@ -1,6 +1,9 @@
 import Product from "../model/product.model.js";
 
-// here action is middleware
+export const signUpPage = (request,response,next)=>{
+  return response.render("signup.ejs");
+}
+
 export const indexAction = (request,response,next)=>{
     Product.getList()
     .then((results)=>{

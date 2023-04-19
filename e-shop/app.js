@@ -4,7 +4,8 @@ import path from "path";
 import IndexRouter from "./routes/index.route.js";
 import ProductRouter from "./routes/product.route.js";
 import CartRouter from './routes/cart.route.js';
-
+import UserRouter from './routes/user.route.js';
+import bodyParser from 'body-parser';
 const app = express();
 
 app.set("view engine","ejs");
@@ -15,10 +16,15 @@ const __dirname = path.dirname(__filename);
 let publicPath = path.join(__dirname,"public");
 app.use(express.static(publicPath));
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
+
 // http://localhost:3000/product/...
 app.use("/product",ProductRouter);
 
 app.use("/cart",CartRouter);
+app.use("/user",UserRouter);
+
 // http://localhost:3000/
 app.use("/",IndexRouter);
 
