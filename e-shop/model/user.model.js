@@ -19,9 +19,9 @@ class User{
                         
                         bcrypt.compare(this.password,encryptedPassword)
                         .then(status=>{
-                            console.log(status);
+                            resolve(result[0].id);
                         }).catch(err=>{
-                            console.log(err);
+                            reject(err);
                         })
                        } 
                     }

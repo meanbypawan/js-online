@@ -9,8 +9,11 @@ export const signin = async (request,response,next)=>{
 
    user.signin()
    .then(result=>{
-    console.log(result);
-   }).catch(err=>{
+      request.session.currentUser = user.email;
+      request.session.currentUserId = result;
+      return response.redirect("/"); // /-index.ejs
+      
+    }).catch(err=>{
     console.log(err);
    })
 }
@@ -28,7 +31,7 @@ export const signup = async (request,response,next)=>{
     user.password = encryptedPassword;
     user.save().
     then(result=>{
-        console.log(result);
+        return response.render("signin.ejs");
     }).catch(err=>{
         console.log(err);
     })

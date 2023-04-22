@@ -55,7 +55,7 @@
                 <div class="col-md-4">
                    <ul class="right_icon d_none1">
                       <li><a href="#"><img src="/images/shopping.png" alt="#"/></a> </li>
-                      <a href="#" class="order">Order Now</a> 
+                      <a href="/user/cart" class="order">View Cart</a> 
                    </ul>
                 </div>
              </div>
@@ -77,12 +77,18 @@
                             <li class="nav-item">
                                <a class="nav-link" href="/product/list">Products</a>
                             </li>
+                            <%if(!currentUser){%>
                             <li class="nav-item">
                                <a class="nav-link" href="/signup">Sign up</a>
                             </li>
                             <li class="nav-item">
                               <a class="nav-link" href="/signin">Sign in</a>
                            </li>
+                           <%}else{%>
+                              <li class="nav-item">
+                                 <a class="nav-link" href="/signout">Sign out</a>
+                              </li>
+                           <%}%>
                          </ul>
                       </div>
                    </nav>

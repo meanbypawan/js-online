@@ -5,13 +5,18 @@ export const signUpPage = (request,response,next)=>{
 }
 
 export const indexAction = (request,response,next)=>{
+    console.log(request.session);
     Product.getList()
     .then((results)=>{
         return response.render("index.ejs",{
-            productList: results
+            productList: results,
+            currentUser: request.session.currentUser
         });
     })
     .catch(err=>{
         console.log(err);
     })
+}
+export const signInPage = (request,response,next)=>{
+    return response.render("signin.ejs");
 }

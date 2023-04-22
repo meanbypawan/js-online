@@ -6,6 +6,8 @@ import ProductRouter from "./routes/product.route.js";
 import CartRouter from './routes/cart.route.js';
 import UserRouter from './routes/user.route.js';
 import bodyParser from 'body-parser';
+import session from "express-session";
+
 const app = express();
 
 app.set("view engine","ejs");
@@ -19,7 +21,14 @@ app.use(express.static(publicPath));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 
+app.use(session({
+    secret: 'fsdfdrewrewvcvvberw',
+    resave: false,
+    name: 'eshop',
+}));
+
 // http://localhost:3000/product/...
+
 app.use("/product",ProductRouter);
 
 app.use("/cart",CartRouter);
