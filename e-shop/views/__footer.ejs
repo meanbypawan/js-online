@@ -70,15 +70,15 @@
  <!-- Javascript files-->
  <script>
    function addToCart(productId){
-     var xhttp = new XMLHttpRequest();
-     window.alert(productId);
-     xhttp.open("GET","/cart/add-to-cart/"+productId,true);
-     xhttp.send();
-     xhttp.onreadystatechange = function(){
-      if(xhttp.readyState == 4){
-         window.alert(xhttp.responseText);
+     $.ajax({
+      url: '/cart/add-to-cart/'+productId,
+      success: function(result){
+         window.alert(result.message);
+      },
+      error: function(errorResponse){
+        window.location.href='/signin';
       }
-     }
+     });
    }
  </script>
  <script src="js/jquery.min.js"></script>
