@@ -1,0 +1,45 @@
+Sequelize :-
+ 1. It is Node.Js based ORM Tool
+ 2. ORM :- Object Relational Mapping
+ 3. It provide facility to map database table in js application by createing Model
+ 4. Sequlize model basically represent table in database and
+    it also provide interface to interact with the
+    database
+    Model: User
+    User.create()------> SQL--------> Database
+    User.findAll()
+    User.destroy()
+    User.update()
+    .........
+    .........
+ 5. It also provide transaction support
+ 6. Automatic connectio pool support
+ 7. Also Provide association facility // include()
+    Eager loading and Lazy Loading  
+ 8. Strong validation support.  
+ 9. Sequelize provide promoise based method 
+ ------------------------------------------------
+ Databse:-
+  User(id,username,email,password,contact,gender)
+   
+ Sequelize Model
+ const User = sequelize.define("user",{
+   id:{
+     type: DataTypes.INTEGER
+   },
+   username:{
+     type: DataTypes.STRING
+   }
+   ..
+   ..
+ })  
+ 
+ Sequlize Model will turn.convert into the class (User)
+ 
+ -----------------------------
+ http://localhost:3000/user/save
+ 
+ /user -:- user.route.js
+ 
+ 
+ 
