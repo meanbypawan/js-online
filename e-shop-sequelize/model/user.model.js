@@ -1,6 +1,6 @@
 import { DataTypes } from "sequelize";
 import sequelize from "./dbConfig.js";
-
+import bcrypt from "bcryptjs";
 const User = sequelize.define("user",{
     username:{
         type: DataTypes.STRING,
@@ -19,11 +19,15 @@ const User = sequelize.define("user",{
         validate:{
             isEmail: true
         }
-
     },
     password:{
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        set(value){
+           let saltKey = bcrypt.genSaltSync(10);
+           let encryptedPassword = bcrypt.hashSync(value,saltKey);
+           this.setDataValue("password",encryptedPassword);
+        }
     },
     gender:{
         type: DataTypes.STRING,
@@ -32,9 +36,11 @@ const User = sequelize.define("user",{
         }
     }
 });
-// sync()
-// sync({force: true})
-// sync({alter: true})
+
+User.checkPassword = (originalPassword,hashPassword)=>{
+  console.log("Check Password Called..");  
+  return bcrypt.compareSync(originalPassword,hashPassword);
+}
 sequelize.sync()
 .then(()=>{
     console.log("users table created...");
