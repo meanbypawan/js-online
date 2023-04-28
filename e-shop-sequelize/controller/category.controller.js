@@ -24,6 +24,19 @@ import {Category, Product} from '../model/association.js'
 //      return response.staus(500).json({error: 'Server Error', status: false});
 //   })
 // }
+export const getCategory = (request,response,next)=>{
+  let page = request.query.page;
+  // page = 2
+  Category.findAll({
+    limit: 5,
+    offset: (page-1)*5
+  })
+  .then(result=>{
+    return response.status(200).json({categories: result, status:true});
+  }).catch(err=>{
+    console.log(err);
+  })
+}
 export const fetchCategory = (request,response,next)=>{
   // Eager Loading
   Category.findAll({
@@ -32,12 +45,11 @@ export const fetchCategory = (request,response,next)=>{
       attributes:["title","price"],
       where:{price:{[Op.gt]: 200}}
     }
-  })
-  .then(result=>{
+  }).then(result=>{
     return response.status(200).json({categories: result, status: true});
   }).catch(err=>{
      return response.staus(500).json({error: 'Server Error', status: false});
-  })
+  });
 }
 export const saveInBulk = async(request,response,next)=>{
   let categories = request.body.categories;

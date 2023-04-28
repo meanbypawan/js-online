@@ -39,5 +39,5 @@ const Product = sequelize.define("product",{
     console.log("Product table created....");
   }).catch(err=>{
     console.log(err);
-  })
+  });
   export default Product;
