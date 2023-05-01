@@ -1,0 +1,23 @@
+{
+  "order_details":{
+      "contactPerson" : "test",
+      "contactNumber" : "9009111222",
+      "deliveryAddress": "51, indore",
+      "billAmount": 5000,
+      "userId":1,
+      "orderItem":[
+       {
+        "productId": 1,
+        "qty": 2
+       },
+       {
+        "productId": 2,
+        "qty": 5
+       },
+       {
+        "productId": 4,
+        "qty": 1
+       } 
+      ]  
+   }
+}

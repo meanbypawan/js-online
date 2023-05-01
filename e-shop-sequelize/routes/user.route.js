@@ -1,5 +1,5 @@
 import express from "express";
-import { save, signIn } from "../controller/user.controller.js";
+import { save, signIn, allUserInfo } from "../controller/user.controller.js";
 import { body } from "express-validator";
 
 const router = express.Router();
@@ -11,4 +11,5 @@ body("password","password must have 5 letter at least").isLength({min: 5}),
 body("email","Not a valid email id").isEmail(),save);
 
 router.post("/signin",signIn);
+router.post("/all-info",allUserInfo);
 export default router;
