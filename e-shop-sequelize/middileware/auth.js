@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-
+import { generateToken } from '../controller/user.controller.js';
 export const verifyToken = (request,response,next)=>{
     let token = request.headers.authorization;
     if(!token)
@@ -10,17 +10,24 @@ export const verifyToken = (request,response,next)=>{
 
     jwt.verify(accessToken,'secret-for-access-token',(err)=>{
        if(err){
+        console.log("Access token is expired.....");
         if(err.message.includes("expired")){
-            jwt.verify(refreshToken,'secret-for-refresh-token',(err)=>{
-                if(err)
+            jwt.verify(refreshToken,'secret-for-refresh-token',(err,decode)=>{
+                if(err){
+                  console.log("Refresh Token is also expired....");
                   return response.status(401).json({error: 'Unauthorized request', status: false});
+                }
                 else{
-                  // Again generate new token (access, refreshToken)
+                  // Re-generate Access token and Refresh Token
+                  console.log("Payload Subject: "+decode.subject);
+                  const {token,refreshToken} =  generateToken(decode.subject);
+                  response.set("Authorization",token+" "+refreshToken);
                   return next();
                 }       
             })
-        } 
-        return response.status(401).json({error: 'Unauthorized request', status: false});
+        }
+        else
+         return response.status(401).json({error: 'Unauthorized request', status: false});
        }
        else 
         return next();

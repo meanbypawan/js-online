@@ -4,6 +4,8 @@ import Product from "../model/product.model.js";
 import User from "../model/user.model.js"
 import { validationResult } from "express-validator";
 import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+dotenv.config();
 export const allUserInfo = (request,response,next)=>{
   User.findOne({
     where: {id: request.body.id},
@@ -47,12 +49,11 @@ export const save = (request,response,next)=>{
   }); 
 }
 
-const generateToken = (userId)=>{
+export const generateToken = (userId)=>{
    // userId : unique
    let payload = {subject: userId};
-
-   let token = jwt.sign(payload,'secret-for-access-token',{expiresIn: 50});
-   let refreshToken = jwt.sign(payload,'secret-for-refresh-token',{expiresIn: 60});
+   let token = jwt.sign(payload,process.env.ACCESS_TOKEN_SECRET,{expiresIn: 2000});
+   let refreshToken = jwt.sign(payload,process.env.REFERESH_TOKEN_SECRET,{expiresIn: 6000});
    
    return {token,refreshToken};
 }

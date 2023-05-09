@@ -1,0 +1,200 @@
+Relational Database/ SQL Database
+   Native SQL Query
+   Sequelize (mysql, postgres, mariadb..)/ ORM
+
+No-SQL Database
+  
+  MongoDB
+   Native Mongo Command   
+   
+   MongoClient Driver
+   Mongoose(ODM) Object Document Mapper (90%)
+---------------------------------------------------------------------
+  
+  Relational :- Structured    
+  Constraint
+  Normalize
+  Joins mongo-3 (lookup-left outer-join)
+  
+  Non-relational :- un-structured
+  Blob
+  Clob
+  product
+  1. {name: ''}
+  2. {name:'', brand: ''}
+  3. {name: '',brand:'', price:''}
+
+  Datatypes:-
+    String
+    Number
+    Boolean
+    Object :- {}
+    Array :- ["java","angular"]
+    Date :-  new Date().now
+    ObjectId:- _id
+    Binary data:- 
+    null
+    undefined
+ 
+ Form Of Data :-
+  In Mysql data stored in the form of table
+  
+  MongoDb store the data in the form oF
+  BSON (Binary JSON)
+  
+  Mysql:-
+   Database --> Table ---> Row/Records
+  
+  MongoDb
+   Database --> Collection--> Documents
+   
+   Collection
+     a. Capped Collection  :- limit number of documents
+     b. Uncapped Collection :- no limit
+  
+  aggregate pipeline 95%
+  -----------------------------------------------------------
+  
+  database ---> collections ----> document
+
+  Collections
+    a. uncapped collection
+    b.  capped collection  
+  Creating database
+    
+    
+    use databaseName
+    use studentdb;
+    
+    db.createCollection('student')
+    db.newCollection.insertOne({}) // create new collection
+    db.student.insertMany([{},{},{},{}])
+    
+    Fetching data
+    
+    db.products.find()
+    db.products.find().limit(5);
+    db.products.find().skip(3).limit(3)
+    
+    db.products.find({},{title:1,price:1,_id:0})     
+
+    // select * from product where category = 'smartphone'
+    db.products.find({category: 'smartphones'})  
+    
+    mongodb operator
+     $gt, $lt, $gte, $lte, $eq, $nq,$and, $or....
+     {}
+    db.products.find({category: 'smartphones',price:{$gt: 500}},{title:1,price:1,_id:0})
+    
+    sort :--
+    db.products.find({},{title:1,price:1,_id:0}).sort({price: 1})
+    
+    db.products.find(
+    {
+      price: db.products.find().sort({price:-1}).toArray()[0].price},   
+      {
+        title:1,price:1
+      }
+      )
+  
+  -----------------------
+  db.products.find()
+  
+  aggregate pipe line
+   $group
+     $max
+     $min
+     $sum
+   $lookup
+   $match
+   $unwind
+   $project
+   $addFields
+   $elemach
+   ...............  
+  
+  db.products.aggregate([
+   {
+     $match:{price:{$gt:1000}}
+   },
+   {
+     $project:{
+       title: 1,
+       price: 1
+     }
+   },
+   {
+     $unwind:"$images"
+   },
+   {
+     $match: {images: 'https://i.dummyjson.com/data/products/93/2.jpg'}
+   }
+  ])
+  ----------------------------------------------------------------
+  1. Embedded Collection
+  2. Referencing
+  
+  Category (categoryName)----> Product(category)
+  
+  lookup : foreignField, localField, from, as
+  db.categories.aggregate([
+    {
+      $lookup:{
+        from: 'products',
+        foreignField: 'category',
+        localField: 'categoryName',
+        as: 'productList'  
+      }
+    }
+  ])
+  
+  db.products.aggregate([
+    {
+      $lookup:{ // populate
+        from: 'categories',
+        foreignField: 'categoryName',
+        localField: 'category',
+        as: 'category'
+      }
+    },
+    {
+       $match: {price: {$gt: 1000}}
+    }
+  ]);
+  
+  users(_id,name,email......)
+  
+  carts(_id, userId)
+  
+  users(_id) ------> carts(userId)
+  
+  db.users.aggregate([
+    {
+      $match: {_id: ObjectId("6442244f69021891a2b039d5")}
+    },
+    {
+      $lookup:{
+         from: "carts",
+         foreignField: 'userId',
+         localField: '_id',
+         as: 'cartList'
+      }
+    }
+  ])
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ 
+ 
+
+
+
+
+   
