@@ -3,6 +3,7 @@ import express from "express";
 import { addToCart, getCart, removeFormCart } from "../controller/cart.controller.js";
 
 import multer from "multer";
+
 const upload = multer({dest: 'public'});
 
 const router  = express.Router();
