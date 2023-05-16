@@ -6,6 +6,10 @@ import Binding from './components/Binding';
 import StateDemo from './components/StateDemo';
 import StateDemoTwo from './components/StateDemoTwo';
 import StudentList from './components/StudentList';
+import PropsFirst from './components/PropsFirst';
+import PropsParent from './components/PropsParent';
+import StateChange from './components/StateChange';
+import ParentCom from './components/ParentCom';
 
 class App extends Component{
   render(){
@@ -15,7 +19,10 @@ class App extends Component{
       <Binding/> */}
       {/* <StateDemo/> */}
       {/* <StateDemoTwo/>  */}
-      <StudentList/>
+      {/* <StudentList/> */}
+      <PropsParent/>
+      {/* <StateChange/> */}
+      {/* <ParentCom/> */}
     </div>
   }
 }
