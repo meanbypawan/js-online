@@ -10,6 +10,7 @@ import PropsFirst from './components/PropsFirst';
 import PropsParent from './components/PropsParent';
 import StateChange from './components/StateChange';
 import ParentCom from './components/ParentCom';
+import LifeCycle from './components/LifeCycle';
 
 class App extends Component{
   render(){
@@ -20,9 +21,10 @@ class App extends Component{
       {/* <StateDemo/> */}
       {/* <StateDemoTwo/>  */}
       {/* <StudentList/> */}
-      <PropsParent/>
+      {/* <PropsParent/> */}
       {/* <StateChange/> */}
       {/* <ParentCom/> */}
+      <LifeCycle color="red"/>
     </div>
   }
 }
