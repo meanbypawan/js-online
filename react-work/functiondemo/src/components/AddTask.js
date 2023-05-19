@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import React, { useRef } from "react";
 
 function AddTask({priorityList,saveTask}){
     let titleInput = useRef(null);
@@ -19,4 +19,4 @@ function AddTask({priorityList,saveTask}){
     </>
 }
 
-export default AddTask;
+export default React.memo(AddTask);

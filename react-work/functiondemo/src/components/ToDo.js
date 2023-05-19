@@ -1,12 +1,13 @@
-import { useRef, useState } from 'react';
+import { useCallback, useMemo, useRef, useState } from 'react';
 import data from './data';
 import AddTask from './AddTask';
 export default function ToDo(){
     const [taskList,setTaskList] = useState(data);
     const [status, setStatus] = useState("active");
-    const [priorityList,setPriorityList] = useState([{priorityId:1, priorityValue: "Low"},{priorityId:2, priorityValue: "Medium"},{priorityId:3, priorityValue: "High"}]);
+    const pList = [{priorityId:1, priorityValue: "Low"},{priorityId:2, priorityValue: "Medium"},{priorityId:3, priorityValue: "High"}];
     const [activeButtonStatus,setActiveButtonStatus] = useState(true);
     const [deactiveButtonStatus,setDeactiveButtonStatus] = useState(false);
+    
     
     const showListByStatus = (taskStatus)=>{
        setStatus(taskStatus);
@@ -27,17 +28,21 @@ export default function ToDo(){
       taskList.splice(index,1);
       setTaskList([...taskList,taskObj]);
     }
-    const saveTask = (title,pid)=>{
+    const priorityList = useMemo(()=>pList,[]);    
+    
+    const saveTask = useCallback((title,pid)=>{
       let id = taskList.length+1;
       let date = new Date();
       date = date.getDate()+"/"+(date.getMonth()+1)+"/"+date.getFullYear();
       let status = "active";
       setTaskList([...taskList,{title,pid,id,date,status}]);
-    }
+    },[taskList]);
+    
     console.log("To Do Render................");
     return <>
       <div className="container mt-5">
          <AddTask priorityList={priorityList} saveTask={saveTask}/>
+
          <div className="row mt-5 mb-5">
            <div className="col-5">
             <button onClick={()=>showListByStatus('active')} disabled={activeButtonStatus} className="btn btn-success">Active({taskList.filter((task)=>task.status=="active").length})</button>

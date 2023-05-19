@@ -1,10 +1,10 @@
 import React from "react";
 
-function FirstChild(){
+function FirstChild({title,counter}){
 
     console.log("First Child Render.....");
     return <>
-      <h1>First Child</h1>
+      <h1>First Child : ({title} : {counter})</h1>
     </>
 }
 
