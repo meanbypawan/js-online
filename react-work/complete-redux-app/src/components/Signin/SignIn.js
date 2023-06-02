@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../redux-config/UserSlice";
 import { useNavigate } from "react-router-dom";
+import { fetchCart } from "../../redux-config/CartSlice";
 
 export default function SignIn(){
     const [email,setEmail] = useState("");
@@ -15,8 +16,10 @@ export default function SignIn(){
         try{
            let response = await axios.post(WebApi.USER_SIGNIN,{email,password});
            console.log(response);
-           if(response.status)
+           if(response.status){
             dispatch(setUser(response.user));
+            dispatch(fetchCart(response.user._id));
+           }
            navigate("/");
         }
         catch(error){

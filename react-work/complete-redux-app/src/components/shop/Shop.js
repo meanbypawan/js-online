@@ -4,10 +4,16 @@ import axios from "axios";
 import WebApi from "../../apis/WebApi";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
+import { addItemInToCart, updateCartItem } from "../../redux-config/CartSlice";
 
 export default function Shop() {
     const [productList, setProductList] = useState([]);
     const [page,setPage] = useState(1);
+    const {user,isLoggedIn} = useSelector((store)=>store.user);
+    const {cartItems} = useSelector((store)=>store.cart);
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     useEffect(() => {
         loadProducts();
@@ -25,8 +31,25 @@ export default function Shop() {
     const navigateToProductDescription = (product)=>{
        navigate("/product-description",{state:{product:product}});
     }
+    const addToCart = async (product)=>{
+        if(!isLoggedIn)
+          toast.info("please login first");
+        else{
+          let status = false;
+          if(cartItems.length!=0)
+            status = cartItems.some((item)=>item.productId._id==product._id);
+          if(status)
+           toast.info("Product is already added in cart");
+          else{
+            dispatch(addItemInToCart({userId: user._id,productId:product._id}));
+            dispatch(updateCartItem(product));
+            toast.success("Product successfully added into the cart..");
+          }
+        }  
+    }
     return <>
         <Header />
+        <ToastContainer/>
         <div className="container">
             
                 <InfiniteScroll
@@ -42,7 +65,7 @@ export default function Shop() {
                         <div class="product-img position-relative overflow-hidden">
                             <img class="img-fluid w-100" src={product.thumbnail} alt="" style={{height:'200px'}} />
                             <div class="product-action">
-                                <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></a>
+                                <a class="btn btn-outline-dark btn-square" onClick={()=>addToCart(product)}><i class="fa fa-shopping-cart"></i></a>
                                 <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
                                 <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-sync-alt"></i></a>
                                 <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-search"></i></a>

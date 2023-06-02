@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 export default function Header(){
     const {categoryList} =  useSelector((store)=>store.category);
     const {user,isLoggedIn} = useSelector((store)=>store.user);
+    const {cartItems} = useSelector((store)=>store.cart);
     const navigate = useNavigate();
     return <>
         <div className="container-fluid">
@@ -136,7 +137,7 @@ export default function Header(){
                             </a>
                             <Link to="/view-cart" className="btn px-0 ml-3">
                                 <i className="fas fa-shopping-cart text-primary"></i>
-                                <span className="badge text-secondary border border-secondary rounded-circle" style={{paddingBottom: "2px"}}>0</span>
+                                <span className="badge text-secondary border border-secondary rounded-circle" style={{paddingBottom: "2px"}}>{cartItems.length}</span>
                             </Link>
                         </div>
                     </div>
