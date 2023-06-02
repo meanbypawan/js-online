@@ -3,10 +3,12 @@ import Header from "../header/Header";
 import axios from "axios";
 import WebApi from "../../apis/WebApi";
 import InfiniteScroll from "react-infinite-scroll-component";
+import { useNavigate } from "react-router-dom";
 
 export default function Shop() {
     const [productList, setProductList] = useState([]);
     const [page,setPage] = useState(1);
+    const navigate = useNavigate();
     useEffect(() => {
         loadProducts();
     }, []);
@@ -19,6 +21,9 @@ export default function Shop() {
         catch (err) {
             console.log(err);
         }
+    }
+    const navigateToProductDescription = (product)=>{
+       navigate("/product-description",{state:{product:product}});
     }
     return <>
         <Header />
@@ -55,6 +60,9 @@ export default function Shop() {
                                 <small class="fa fa-star text-primary mr-1"></small>
                                 <small class="fa fa-star text-primary mr-1"></small>
                                 <small>(99)</small>
+                            </div>
+                            <div>
+                                <button onClick={()=>navigateToProductDescription(product)} className="btn btn-outline-warning mt-2">View more</button>
                             </div>
                         </div>
                     </div>

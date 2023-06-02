@@ -1,8 +1,10 @@
 import { useSelector } from "react-redux"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Header(){
     const {categoryList} =  useSelector((store)=>store.category);
+    const {user,isLoggedIn} = useSelector((store)=>store.user);
+    const navigate = useNavigate();
     return <>
         <div className="container-fluid">
         <div className="row bg-secondary py-1 px-xl-5">
@@ -45,8 +47,8 @@ export default function Header(){
                         <i className="fas fa-heart text-dark"></i>
                         <span className="badge text-dark border border-dark rounded-circle" style={{paddingBottom: "2px"}}>0</span>
                     </a>
-                    <a href="" className="btn px-0 ml-2">
-                        <i className="fas fa-shopping-cart text-dark"></i>
+                    <a className="btn px-0 ml-2">
+                        <i onClick={()=>navigate("/view-cart")} className="fas fa-shopping-cart text-dark"></i>
                         <span className="badge text-dark border border-dark rounded-circle" style={{paddingBottom: "2px"}}>0</span>
                     </a>
                 </div>
@@ -110,6 +112,7 @@ export default function Header(){
                     </button>
                     <div className="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div className="navbar-nav mr-auto py-0">
+
                             <a href="index.html" className="nav-item nav-link active">Home</a>
                             <Link to="/shop" className="nav-item nav-link">Shop</Link>
                             <a href="detail.html" className="nav-item nav-link">Shop Detail</a>
@@ -121,16 +124,20 @@ export default function Header(){
                                 </div>
                             </div>
                             <a href="contact.html" className="nav-item nav-link">Contact</a>
+                            {!isLoggedIn && <Link to="/signin" className="nav-item nav-link">Sign in</Link>}
+                            {!isLoggedIn && <Link to="/signup" className="nav-item nav-link">Sign up</Link>}
+                            {isLoggedIn && <Link to="" className="nav-item nav-link">Sign out</Link>}
+                        
                         </div>
                         <div className="navbar-nav ml-auto py-0 d-none d-lg-block">
                             <a href="" className="btn px-0">
                                 <i className="fas fa-heart text-primary"></i>
                                 <span className="badge text-secondary border border-secondary rounded-circle" style={{paddingBottom: "2px"}}>0</span>
                             </a>
-                            <a href="" className="btn px-0 ml-3">
+                            <Link to="/view-cart" className="btn px-0 ml-3">
                                 <i className="fas fa-shopping-cart text-primary"></i>
                                 <span className="badge text-secondary border border-secondary rounded-circle" style={{paddingBottom: "2px"}}>0</span>
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </nav>
